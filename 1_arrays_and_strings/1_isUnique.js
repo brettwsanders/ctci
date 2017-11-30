@@ -10,7 +10,7 @@
  * Edge Cases: really long string, empty string, wrong type
  * */
 
-const isUnique = string => {
+const isUnique1 = string => {
   const charHash = {};
   const charArray = string.split("");
   let index = 0;
@@ -25,6 +25,20 @@ const isUnique = string => {
   return true;
 };
 
+const isUnique2 = string => {
+  while (string.length > 0) {
+    const char = string.slice(0, 1);
+    string = string.slice(1);
+    for (index = 0; index < string.length; index++) {
+      if (char === string[index]) {
+        return false;
+      }
+    }
+  }
+  return true;
+};
+
+
 // Test Cases
 const unique1 = 'asdfhjk12347890 -+=/;';
 const unique2 = '';
@@ -34,10 +48,18 @@ const notUnique2 = 'asljlk12346789 -+//';
 const notUnique3 = '  4';
 const notUnique4 = 'aalksajfdl;jasldkfjal;ksjdasdkjfhkasgdfhaskjdhfkahsdfkhalskjhdfoqiwueyroqiuwyeroiuqyweoiruyqiowuyeriuqwyeoriyqwoieuryqoiwueyroiqyweoiruyqioweyroiquwyeriuyqwieryoiqwyeroiqywoeiruyqoiwueyrioquwyeriuqywoeriuqywoeiryqoiweuyroiqwuyeroiquyweriuqywoeiryqoiuweyroiquweyroiuqyweiruyqoiweyroiqwyerioyqweiryoiqweyroqiweyriuqwyeriuoqywoieuryqoiwueyrioquwyeroiuqyweoiruyqowieuryqoiuweyroiquwyeroiquwyeroiquyweroiuqyweioruyqwoiueryoqiuweyroiuqyweoriuyqwioeuryqoiwueyrioquwyreoiuqwyeroiuyqweoiruyqowiueryqoiuwyreuiqyweoiryqower';
 
-console.log(isUnique(unique1), 'should be true');
-console.log(isUnique(unique2), 'should be true');
-console.log(isUnique(unique3), 'should be true');
-console.log(isUnique(notUnique1), 'should be false');
-console.log(isUnique(notUnique2), 'should be false');
-console.log(isUnique(notUnique3), 'should be false');
-console.log(isUnique(notUnique4), 'should be false');
+console.log(isUnique1(unique1), 'should be true');
+console.log(isUnique1(unique2), 'should be true');
+console.log(isUnique1(unique3), 'should be true');
+console.log(isUnique1(notUnique1), 'should be false');
+console.log(isUnique1(notUnique2), 'should be false');
+console.log(isUnique1(notUnique3), 'should be false');
+console.log(isUnique1(notUnique4), 'should be false');
+
+console.log(isUnique2(unique1), 'should be true');
+console.log(isUnique2(unique2), 'should be true');
+console.log(isUnique2(unique3), 'should be true');
+console.log(isUnique2(notUnique1), 'should be false');
+console.log(isUnique2(notUnique2), 'should be false');
+console.log(isUnique2(notUnique3), 'should be false');
+console.log(isUnique2(notUnique4), 'should be false');
