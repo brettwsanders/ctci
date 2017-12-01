@@ -13,9 +13,10 @@
  * - sort and then compare string for equality
  * */
 
-
 const checkPermutation = (str1, str2) => {
-
+  sortedStr1 = str1.split("").sort().join("");
+  sortedStr2 = str2.split("").sort().join("");
+  return sortedStr1 === sortedStr2;
 };
 
 // Test Cases
