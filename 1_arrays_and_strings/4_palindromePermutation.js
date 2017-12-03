@@ -16,7 +16,9 @@
 const palindromePerm = string => {
   if (string.length <= 1) return true;
   const chars = {};
-  const str = string.toLowerCase()
+
+  //clean the string (lowercase and remove spaces)
+  const str = string.replace(/ /g, '').toLowerCase()
 
   //iterate thru string and put each char on object with a count
   for (index = 0; index < str.length; index++) {
