@@ -7,7 +7,7 @@
  * Output: bool
  * Complexity:
  * Edge Cases: empty string, single character string,
- * Notes: case doesn't matter
+ * Notes: case doesn't matter, spaces don't count
  *
  * Ideas:
  * */
@@ -15,13 +15,31 @@
 // Solution
 const palindromePerm = string => {
   if (string.length <= 1) return true;
-  //initialize object for counting chars
   const chars = {};
-  //convert string to lowercase
+  const str = string.toLowerCase()
+
   //iterate thru string and put each char on object with a count
-  //iterate thru object
-    //if more than 1 odd count then return false
-  //return true
+  for (index = 0; index < str.length; index++) {
+    const char = str[index];
+    if (chars[char]) {
+      chars[char]++;
+    } else {
+      chars[char] = 1;
+    }
+  }
+
+  //iterate thru object and count odds
+  let odds = 0;
+  Object.keys(chars).forEach(char => {
+    const value = chars[char];
+    // if value is odd
+    if (value % 2 === 1) {
+      odds++;
+    }
+  });
+
+  // if more than one odd then return false, else true
+  return odds > 1 ? false : true;
 }
 
 // Test Cases
