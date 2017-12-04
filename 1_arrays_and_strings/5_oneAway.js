@@ -14,6 +14,17 @@
 
 // Solution
 const oneAway = (str1, str2) => {
-}
+};
 
 // Test Cases
+console.log(oneAway('pale', 'ple'), 'should be true');
+console.log(oneAway('pales', 'pale'), 'should be true');
+console.log(oneAway('pale', 'bale'), 'should be true');
+console.log(oneAway('pale', 'pale'), 'should be true');
+console.log(oneAway('', ' '), 'should be true');
+console.log(oneAway(' ', ''), 'should be true');
+console.log(oneAway(' ', ' '), 'should be true');
+console.log(oneAway('', ''), 'should be true');
+
+console.log(oneAway('pale', 'bake'), 'should be false');
+console.log(oneAway('', '   '), 'should be false');
