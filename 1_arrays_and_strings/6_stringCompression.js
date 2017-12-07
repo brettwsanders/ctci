@@ -12,10 +12,27 @@
  * Ideas:
  * - convert all to compressed string and compare length (brute force)
  * - check if any character is repeated 3x in a row and if so return compressed version
+ * ---> 3x in a row doesnt guarantee it should be compressed
  * */
 
 // Solution
 const stringComp = str => {
+  // initialize compressed string variable to build
+  let compressedStr = '';
+  // initialize variable to store previous
+  let previousChar = '';
+  // initialize variable to count the current char repeations
+  let countOfRepeatingPrevChar = 0;
+  // loop thru each character in string
+    // get the current character
+    // get the previous character
+    // if repeated (they are the same OR count is 0)
+      // add one to count of repeats
+    // else (if different)
+      // add to the compressed char (count + previousChar)
+
+
+  return shorterString(str, compressed);
 };
 
 // Test Cases
