@@ -26,6 +26,9 @@ const stringComp = str => {
   // initialize variable to count the current char repeations
   let countOfRepeatingPrevChar = 1;
 
+  const updateCompressedStr = () => {
+    compressedStr = compressedStr + String(countOfRepeatingPrevChar) + previousChar;
+  }
   // loop thru each character in string starting at index 1
   for (let i = 1; i < str.length; i++) {
     // get the current character
@@ -37,13 +40,14 @@ const stringComp = str => {
     // else (if different)
     } else {
       // add to the compressed char (count + previousChar)
-      compressedStr = compressedStr + String(countOfRepeatingPrevChar) + previousChar;
+      updateCompressedStr();
       // update previous char
       previousChar = currentChar;
       // change count to 1
       countOfRepeatingPrevChar = 1;
     }
   }
+  updateCompressedStr();
 
   if (compressedStr.length < str.length) {
     return compressedStr;
