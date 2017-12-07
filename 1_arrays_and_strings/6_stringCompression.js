@@ -17,22 +17,39 @@
 
 // Solution
 const stringComp = str => {
+  // handle case where string is 2 or less
+  if (str.length <= 2) return str;
   // initialize compressed string variable to build
   let compressedStr = '';
   // initialize variable to store previous
-  let previousChar = '';
+  let previousChar = str[0];
   // initialize variable to count the current char repeations
-  let countOfRepeatingPrevChar = 0;
-  // loop thru each character in string
+  let countOfRepeatingPrevChar = 1;
+
+  // loop thru each character in string starting at index 1
+  for (let i = 1; i < str.length; i++) {
     // get the current character
-    // get the previous character
+    const currentChar = str[i];
     // if repeated (they are the same OR count is 0)
+    if (currentChar === previousChar) {
       // add one to count of repeats
+      countOfRepeatingPrevChar++;
     // else (if different)
+    } else {
       // add to the compressed char (count + previousChar)
+      compressedStr = compressedStr + String(countOfRepeatingPrevChar) + previousChar;
+      // update previous char
+      previousChar = currentChar;
+      // change count to 1
+      countOfRepeatingPrevChar = 1;
+    }
+  }
 
-
-  return shorterString(str, compressed);
+  if (compressedStr.length < str.length) {
+    return compressedStr;
+  } else {
+    return str;
+  }
 };
 
 // Test Cases
