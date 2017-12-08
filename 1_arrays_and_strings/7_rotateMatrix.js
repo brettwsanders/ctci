@@ -16,14 +16,14 @@ const rotateMatrix = matrix => {
   // init rotatedMatrix
   let rotatedMatrix = [];
   // loop through the columns of the matrix (left to right)
-  for (let column = 0; column < matrix[0].length; column++) {
+  for (let column = 0; column < matrix.length; column++) {
     // init a new array to be inserted as row into rotated matrix
     let rowOfRotatedMatrix = [];
     // loop through the rows of the matrix (bottom to up)
     for (let row = matrix.length - 1; row >= 0; row--) {
        // push the current byte into the new array
       const byte = matrix[row][column];
-      rowOfRotatedMatrix.push(byte);
+      if (byte) rowOfRotatedMatrix.push(byte);
     };
     // push the array into rotatedMatrix
     rotatedMatrix.push(rowOfRotatedMatrix);
