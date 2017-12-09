@@ -8,12 +8,28 @@
  * Edge Cases:
  *
  * Ideas:
- * -
+ * - loop through all values and find zeros. if zero is found then note the row and column. keep track of all rows and columns to be zero'd out
+ * ---> then loop through again and build up new matrix
  * */
 
 // Solution
 const zeroMatrix = matrix => {
+  // initialize result matrix
   let resultMatrix = matrix;
+  // initialize objects to store the rows and columsn that will be zero'd out in result
+  let rowsToBeZero = {};
+  let columnsToBeZero = {};
+  // loop through the matrix rows
+    // loop through the matrix columns
+      // add to resultMatrix
+      // if zero is found
+        // add column and row index to rowsToBeZero and columnsToBeZero
+
+  // loop through resultMatrix rows
+    // loop through resultMatrix columns
+      // if column or row to be zero'd
+        // replace value in resultMatrix with 0
+  // return result
   return resultMatrix;
 }
 
