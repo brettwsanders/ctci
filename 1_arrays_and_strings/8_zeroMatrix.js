@@ -10,6 +10,9 @@
  * Ideas:
  * - loop through all values and find zeros. if zero is found then note the row and column. keep track of all rows and columns to be zero'd out
  * ---> then loop through again and build up new matrix
+ *
+ * How to optimize:
+ * - dont need to do anything if no values in rowsToBeZero or columnsToBeZero
  * */
 
 // Solution
@@ -34,6 +37,10 @@ const zeroMatrix = matrix => {
       }
     }
   }
+  // if there are no rows to be zero'd then returnMatrix. Don't need to check columns
+  // because if no rows, then there will be no columns
+  if (Object.keys(rowsToBeZero) === 0) { return resultMatrix; }
+
   // loop through resultMatrix rows
   for (let row = 0; row < matrix.length; row++) {
     // loop through resultMatrix columns
