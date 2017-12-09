@@ -18,12 +18,35 @@ const zeroMatrix = matrix => {
 }
 
 // Test Cases
+let input;
+let output;
+
 // Case 1
-let input = [[]];
-let output = [[]];
+input = [[]];
+output = [[]];
 console.log(zeroMatrix(input), 'should be', output);
 
 // Case 2
-let input = [[1, 0], [1, 1]];
-let output = [[0, 0], [1, 0]];
+input = [[1, 0], [1, 1]];
+output = [[0, 0], [1, 0]];
+console.log(zeroMatrix(input), 'should be', output);
+
+// Case 3
+input = [[1, 2, 3, 0], [4, 5, 6, 7]];
+output = [[0, 0, 0, 0], [4, 5, 6, 0]];
+console.log(zeroMatrix(input), 'should be', output);
+
+// Case 4
+input = [['a', 0, 'b', 0], [0, 'c', 0, 'd']];
+output = [[0, 0, 0, 0], [0, 0, 0, 0]];
+console.log(zeroMatrix(input), 'should be', output);
+
+// Case 5
+input = [[0, 'a', 1, 'bumblebee'], [undefined, null, {}, 0]];
+output = [[0, 0, 0, 0], [0, 0, 0, 0]];
+console.log(zeroMatrix(input), 'should be', output);
+
+// Case 6
+input = [[1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 0]];
+output = [[1, 1, 1, 0], [1, 1, 1, 0], [1, 1, 1, 0], [0, 0, 0, 0]];
 console.log(zeroMatrix(input), 'should be', output);
