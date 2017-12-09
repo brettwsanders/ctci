@@ -3,8 +3,8 @@
  * column are set to 0.
  *
  * Input: MxN matrix, does not need to be square
- * Output:
- * Complexity:
+ * Output: MxN matrix, same size, but with rows and columns zero'd out where zeros exist
+ * Complexity: ONM
  * Edge Cases:
  *
  * Ideas:
@@ -20,15 +20,31 @@ const zeroMatrix = matrix => {
   let rowsToBeZero = {};
   let columnsToBeZero = {};
   // loop through the matrix rows
+  for (let row = 0; row < matrix.length; row++) {
     // loop through the matrix columns
+    for (let column = 0; column < matrix[row].length; column++) {
       // add to resultMatrix
+      const value = matrix[row][column];
+      resultMatrix[row][column] = value; // TODO: copy value instead of reference
       // if zero is found
+      if (value === 0) {
         // add column and row index to rowsToBeZero and columnsToBeZero
-
+        rowsToBeZero[row] = true;
+        columnsToBeZero[column] = true;
+      }
+    }
+  }
   // loop through resultMatrix rows
+  for (let row = 0; row < matrix.length; row++) {
     // loop through resultMatrix columns
+    for (let column = 0; column < matrix[row].length; column++) {
       // if column or row to be zero'd
+      if (rowsToBeZero[row] || columnsToBeZero[column]) {
         // replace value in resultMatrix with 0
+        resultMatrix[row][column] = 0;
+      }
+    }
+  }
   // return result
   return resultMatrix;
 }
