@@ -16,6 +16,21 @@
 // Solution
 const stringRotation = (s1, s2) => {
   // if strings different length, return false
+  if (s1 === s2) return true;
+  if (s1.length !== s2.length) return false;
+  // loop through second string
+  for (let index = 0; index < s2.length; index++) {
+    // if char equals first character of first string
+    if (s2[index] === s1[0]) {
+      // create new string from second string, but rotated
+      const rotated = s2.slice(index) + s2.slice(0, index);
+      // if rotatedstring equals first string
+      if (rotated === s1) {
+        return true;
+      }
+    }
+  }
+  return false;
 }
 
 // Test Cases
@@ -25,44 +40,44 @@ let s2;
 // Case 1
 s1 = 'waterbottle';
 s2 = 'erbottlewat';
-console.log(stringRotation(), 'should be', true);
+console.log('1. ', stringRotation(s1, s2), 'should be', true);
 
 // Case 2
 s1 = 'waterbottle';
 s2 = 'erbottlewa';
-console.log(stringRotation(), 'should be', false);
+console.log('2. ', stringRotation(s1, s2), 'should be', false);
 
 // Case 3
 s1 = 'waterbottle';
 s2 = 'erbotltewat';
-console.log(stringRotation(), 'should be', false);
+console.log('3. ', stringRotation(s1, s2), 'should be', false);
 
 // Case 4
 s1 = '';
 s2 = '';
-console.log(stringRotation(), 'should be', true);
+console.log('4. ', stringRotation(s1, s2), 'should be', true);
 
 // Case 5
 s1 = 'waterbottle';
 s2 = 'waterbottle';
-console.log(stringRotation(), 'should be', true);
+console.log('5. ', stringRotation(s1, s2), 'should be', true);
 
 // Case 6
 s1 = 'waterbottle';
 s2 = 'ewaterbottl';
-console.log(stringRotation(), 'should be', true);
+console.log('6. ', stringRotation(s1, s2), 'should be', true);
 
 // Case 7
 s1 = 'wwwwwwwwwwe';
 s2 = 'wwwwwwwweww';
-console.log(stringRotation(), 'should be', true);
+console.log('7. ', stringRotation(s1, s2), 'should be', true);
 
 // Case 8
 s1 = 'wwwwwwwwwwe';
 s2 = 'wwwwwwwwewe';
-console.log(stringRotation(), 'should be', false);
+console.log('8. ', stringRotation(s1, s2), 'should be', false);
 
 // Case 9
 s1 = 'wwwwwwwwwweee';
 s2 = 'wwwwwwweeewww';
-console.log(stringRotation(), 'should be', false);
+console.log('9. ', stringRotation(s1, s2), 'should be', true);
