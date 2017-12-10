@@ -4,7 +4,7 @@
  *
  * Input: MxN matrix, does not need to be square
  * Output: MxN matrix, same size, but with rows and columns zero'd out where zeros exist
- * Complexity: ONM
+ * Complexity: O(NM)
  * Edge Cases:
  *
  * Ideas:
