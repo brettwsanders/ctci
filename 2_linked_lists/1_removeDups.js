@@ -42,15 +42,18 @@ class Node {
   removeDups() {
     const valuesStore = {};
     let currNode = this;
+    let nextNode = this.next;
     valuesStore[currNode.value] = true;
 
-    while (currNode && currNode.next !== null) {
-      if (valuesStore[currNode.next.value]) {
-        currNode.next = currNode.next.next;
+    while (nextNode !== null) {
+      if (valuesStore[nextNode.value]) {
+        // remove the duplicate by rewiring the list
+        currNode.next = nextNode.next;
       } else {
-        valuesStore[currNode.next.value] = true;
+        valuesStore[nextNode.value] = true;
+        currNode = nextNode;
       }
-      currNode = currNode.next;
+      nextNode = currNode.next;
     }
   }
 }
