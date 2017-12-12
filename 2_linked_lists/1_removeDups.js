@@ -56,34 +56,77 @@ class Node {
       nextNode = currNode.next;
     }
   }
+
+  removeDupsAlt() {
+    let currNode = this;
+    while (currNode !== null) {
+      let followerNode = currNode;
+      let leaderNode = currNode.next;
+      while (leaderNode !== null) {
+        if (currNode.value === leaderNode.value) {
+          followerNode.next = leaderNode.next;
+        } else {
+          followerNode = leaderNode;
+        }
+        leaderNode = followerNode.next;
+      }
+      currNode = currNode.next;
+    }
+  }
 }
 
 // Test Cases
 
+const case1 = alt => {
+  let linkedList = new Node(7);
+  linkedList.appendNode(8);
+  linkedList.appendNode(1);
+  linkedList.appendNode(8);
+  linkedList.appendNode('hello');
+  linkedList.appendNode('hello');
+  linkedList.appendNode('hello');
+  linkedList.appendNode(1);
+  if (alt) {
+    linkedList.removeDupsAlt();
+  } else {
+    linkedList.removeDups();
+  }
+  console.log(linkedList.getListAsArray(), 'should be', [7, 8, 1, 'hello']);
+}
+
+const case2 = alt => {
+  linkedList = new Node(7);
+  linkedList.appendNode(8);
+  linkedList.appendNode(1);
+  linkedList.appendNode(8);
+  if (alt) {
+    linkedList.removeDupsAlt();
+  } else {
+    linkedList.removeDups();
+  }
+  console.log(linkedList.getListAsArray(), 'should be', [7, 8, 1]);
+}
+
+const case3 = alt => {
+  linkedList = new Node('_');
+  linkedList.appendNode('_');
+  linkedList.removeDups();
+  if (alt) {
+    linkedList.removeDupsAlt();
+  } else {
+    linkedList.removeDups();
+  }
+  console.log(linkedList.getListAsArray(), 'should be', ['_']);
+}
+
 // Case 1
-let linkedList = new Node(7);
-linkedList.appendNode(8);
-linkedList.appendNode(1);
-linkedList.appendNode(8);
-linkedList.appendNode('hello');
-linkedList.appendNode('hello');
-linkedList.appendNode('hello');
-linkedList.appendNode(1);
-linkedList.removeDups();
-console.log(linkedList.getListAsArray(), 'should be', [7, 8, 1, 'hello']);
+case1();
+case1('alt');
 
 // Case 2
-linkedList = new Node(7);
-linkedList.appendNode(8);
-linkedList.appendNode(1);
-linkedList.appendNode(8);
-linkedList.removeDups();
-console.log(linkedList.getListAsArray(), 'should be', [7, 8, 1]);
+case2();
+case2('alt');
 
 // Case 3
-linkedList = new Node('_');
-linkedList.appendNode('_');
-linkedList.removeDups();
-console.log(linkedList.getListAsArray(), 'should be', ['_']);
-
-
+case3();
+case3('alt');
