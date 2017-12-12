@@ -37,14 +37,39 @@ class Node {
     }
     end.next = node;
   }
-}
 
-// Solution
-const removeDups = list => {
+  // Solution
+  removeDups() {
+    const valuesStore = {};
+    let currNode = this;
+    valuesStore[currNode.value] = true;
+
+    while (currNode && currNode.next !== null) {
+      if (valuesStore[currNode.next.value]) {
+        currNode.next = currNode.next.next;
+      } else {
+        valuesStore[currNode.next.value] = true;
+      }
+      currNode = currNode.next;
+    }
+  }
 }
 
 // Test Cases
-const linkedList = new Node(7);
+
+// Case 1
+let linkedList = new Node(7);
 linkedList.appendNode(8);
 linkedList.appendNode(1);
-console.log(linkedList.getListAsArray());
+linkedList.appendNode(8);
+linkedList.appendNode('hello');
+linkedList.appendNode('hello');
+linkedList.appendNode('hello');
+linkedList.appendNode(1);
+linkedList.removeDups();
+console.log(linkedList.getListAsArray(), 'should be', [7, 8, 1, 'hello']);
+
+
+
+
+
