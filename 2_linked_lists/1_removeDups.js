@@ -72,7 +72,18 @@ linkedList.appendNode(1);
 linkedList.removeDups();
 console.log(linkedList.getListAsArray(), 'should be', [7, 8, 1, 'hello']);
 
+// Case 2
+linkedList = new Node(7);
+linkedList.appendNode(8);
+linkedList.appendNode(1);
+linkedList.appendNode(8);
+linkedList.removeDups();
+console.log(linkedList.getListAsArray(), 'should be', [7, 8, 1]);
 
-
+// Case 3
+linkedList = new Node('_');
+linkedList.appendNode('_');
+linkedList.removeDups();
+console.log(linkedList.getListAsArray(), 'should be', ['_']);
 
 
