@@ -40,7 +40,7 @@ class LinkedList {
 
   kthToLast(k) {
     // if k is less then 1 throw error
-    if (k < 1) throw error;
+    if (k < 1) return 'error';
     // init count of linked list nodes
     let nodesCount = 0;
     // run through entire linked list
@@ -51,11 +51,11 @@ class LinkedList {
       currNode = currNode.next;
     }
     // if k is more than count then throw error
-    if (k > nodesCount) throw error;
+    if (k > nodesCount) return 'error';
     // init target index as count - k
-    const targetIndex = count - k;
+    const targetIndex = nodesCount - k;
     // init current index as 0
-    const currIndex = 0;
+    let currIndex = 0;
     // init current node
     currNode = this.head;
     // run through linked list while current is less than target
