@@ -10,6 +10,8 @@
  * Space Complexity:
  *
  * Ideas:
+ * - store a count of nodes on the linkedList class
+ * - run through the entire linkedList twice
  * */
 
 // Solution
@@ -35,6 +37,22 @@ class LinkedList {
     }
     return array;
   }
+
+  kthToLast(k) {
+    // if k is less then 1 throw error
+    // init count of linked list nodes
+    // run through entire linked list
+      // for each node add one to count
+      // if next is null and k is 1 then return value
+    // if k is more than count then throw error
+    // init target index as count - k
+    // init current index as 0
+    // init current node
+    // run through linked list while current is less than target
+      // current node is next node
+      // current index ++
+    // return current node
+  }
 }
 
 class Node {
@@ -50,5 +68,20 @@ linkedList.append(8);
 linkedList.append(9);
 linkedList.append(false);
 linkedList.append('');
-console.log(linkedList.toArray());
+linkedList.append(3);
+linkedList.append(4);
+linkedList.append(5);
+linkedList.append('ok');
+// linked list is now [8, 9, false, '', 3, 4, 5, 'ok']
+// length of linked list is 8
 
+console.log(linkedList.kthToLast(0), 'should be error');
+console.log(linkedList.kthToLast(1), 'should be ok');
+console.log(linkedList.kthToLast(2), 'should be 5');
+console.log(linkedList.kthToLast(3), 'should be 4');
+console.log(linkedList.kthToLast(4), 'should be 3');
+console.log(linkedList.kthToLast(5), 'should be ""');
+console.log(linkedList.kthToLast(6), 'should be false');
+console.log(linkedList.kthToLast(7), 'should be 9');
+console.log(linkedList.kthToLast(8), 'should be 8');
+console.log(linkedList.kthToLast(9), 'should be error');
