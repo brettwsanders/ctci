@@ -40,18 +40,33 @@ class LinkedList {
 
   kthToLast(k) {
     // if k is less then 1 throw error
+    if (k < 1) throw error;
     // init count of linked list nodes
+    let nodesCount = 0;
     // run through entire linked list
+    let currNode = this.head;
+    while (currNode !== null) {
       // for each node add one to count
-      // if next is null and k is 1 then return value
+      nodesCount++;
+      currNode = currNode.next;
+    }
     // if k is more than count then throw error
+    if (k > nodesCount) throw error;
     // init target index as count - k
+    const targetIndex = count - k;
     // init current index as 0
+    const currIndex = 0;
     // init current node
+    currNode = this.head;
     // run through linked list while current is less than target
+    while (currIndex < targetIndex) {
       // current node is next node
+      currNode = currNode.next;
       // current index ++
+      currIndex++;
+    }
     // return current node
+    return currNode;
   }
 }
 
