@@ -54,7 +54,21 @@ class Node {
   }
 }
 
+const partition = (linkedList, value) => {
+  // init left partition
+  // init right partition
+  // loop thru all values of linkedList
+    // if value is less than value, put in left partion
+    // if value is more or equal to value, put in right partition
+  // seam together left and right partition
+  // create new linkedList with left and right partitions
+  // change the head of linkedList to the head of leftPartition
+}
+
 // Test Cases
 const values = [3, 5, 8, 5, 10, 2, 1];
+const result = [3, 1, 2, 10, 5, 5, 8];
 const linkedList = new LinkedList(values)
 console.log(linkedList.toArray(), 'should be', values);
+partition(linkedList, 5);
+console.log(linkedList.toArray(), 'should be', result);
