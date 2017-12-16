@@ -54,21 +54,36 @@ class Node {
   }
 }
 
-const partition = (linkedList, value) => {
+const partition = (ll, value) => {
   // init left partition
+  const left = [];
   // init right partition
-  // loop thru all values of linkedList
+  const right = [];
+  // loop thru all values of ll
+  let currNode = ll.head;
+  while (currNode) {
     // if value is less than value, put in left partion
+    if (currNode.value < value) {
+      left.push(currNode.value);
     // if value is more or equal to value, put in right partition
+    } else {
+      right.push(currNode.value);
+    }
+    currNode = currNode.next;
+  }
   // seam together left and right partition
-  // create new linkedList with left and right partitions
-  // change the head of linkedList to the head of leftPartition
+  const partitioned = left.concat(right);
+  // create new ll with left and right partitions
+  ll = new LinkedList(partitioned);
+  // change the head of ll to the head of leftPartition
+  return ll;
 }
 
 // Test Cases
 const values = [3, 5, 8, 5, 10, 2, 1];
 const result = [3, 1, 2, 10, 5, 5, 8];
-const linkedList = new LinkedList(values)
+let linkedList = new LinkedList(values)
 console.log(linkedList.toArray(), 'should be', values);
-partition(linkedList, 5);
+linkedList = partition(linkedList, 5);
 console.log(linkedList.toArray(), 'should be', result);
+
