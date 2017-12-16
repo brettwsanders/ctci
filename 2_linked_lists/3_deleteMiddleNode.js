@@ -43,6 +43,16 @@ class LinkedListNode {
     return arr;
   }
 
+  getNodeByIndex(index) {
+    let node = this;
+    let count = 0;
+    while (index > count) {
+      node = node.next;
+      count++;
+    }
+    return node;
+  }
+
   deleteNode() {
     // init follower node as this node
     let followerNode = this;
