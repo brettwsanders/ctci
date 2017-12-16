@@ -19,6 +19,15 @@
  * */
 
 // Solution
+class LinkedList {
+  constructor(values) {
+    this.head = new LinkedListNode(values[0]);
+    for (let index = 1; index < values.length; index++) {
+      this.head.append(values[index]);
+    }
+  }
+}
+
 class LinkedListNode {
   constructor(value) {
     this.value = value;
@@ -75,6 +84,7 @@ class LinkedListNode {
 
 
 // Test Cases
+// Case 1
 let linkedList = new LinkedListNode(1);
 linkedList.append(2);
 linkedList.append(3);
@@ -83,5 +93,11 @@ linkedList.append(5);
 console.log(linkedList.toArray(), 'should be', [1, 2, 3, 4, 5]);
 const node = linkedList.getNodeByIndex(2);
 console.log(node.value, 'should be', 3);
-node.deleteNode()
+node.deleteNode();
 console.log(linkedList.toArray(), 'should be', [1, 2, 4, 5]);
+
+
+let testList = new LinkedList([7, 6, 5, 4, 3, 2, 1]);
+let testNode = testList.head.getNodeByIndex(1);
+testNode.deleteNode();
+console.log(testList.head.toArray(), 'should be', [7, 5, 4, 3, 2, 1]);
