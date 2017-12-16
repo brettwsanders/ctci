@@ -42,6 +42,14 @@ class LinkedListNode {
     }
     return arr;
   }
+
+  deleteNode() {
+    let curr = this;
+    while (curr.next) {
+      this.value = this.next.value;
+      curr = curr.next;
+    }
+  }
 };
 
 
