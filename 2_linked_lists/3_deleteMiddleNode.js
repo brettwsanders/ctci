@@ -59,7 +59,7 @@ class LinkedListNode {
     // init leader node as next node
     let leaderNode = this.next;
     // while (leader is not null)
-    while (leaderNode !== null) {
+    while (leaderNode.next !== null) {
       // change value of follower node to leader value
       followerNode.value = leaderNode.value;
       // change follow node to leader node
@@ -68,6 +68,7 @@ class LinkedListNode {
       leaderNode = leaderNode.next;
     }
     // point follower node to null
+    followerNode.value = leaderNode.value;
     followerNode.next = null;
   }
 };
@@ -81,5 +82,6 @@ linkedList.append(4);
 linkedList.append(5);
 console.log(linkedList.toArray(), 'should be', [1, 2, 3, 4, 5]);
 const node = linkedList.getNodeByIndex(2);
+console.log(node.value, 'should be', 3);
 node.deleteNode()
 console.log(linkedList.toArray(), 'should be', [1, 2, 4, 5]);
