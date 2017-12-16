@@ -19,5 +19,36 @@
  * */
 
 // Solution
+class LinkedListNode {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  };
+
+  append(value) {
+    let curr = this;
+    while (curr.next !== null) {
+      curr = curr.next;
+    }
+    curr.next = new LinkedListNode(value);
+  }
+
+  toArray() {
+    let arr = [];
+    let curr = this;
+    while (curr !== null) {
+      arr.push(curr.value);
+      curr = curr.next;
+    }
+    return arr;
+  }
+};
+
 
 // Test Cases
+let linkedList = new LinkedListNode(1);
+linkedList.append(2);
+linkedList.append(3);
+linkedList.append(4);
+console.log(linkedList.toArray(), 'should be', [1, 2, 3, 4]);
+
