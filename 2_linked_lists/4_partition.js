@@ -20,5 +20,41 @@
  * */
 
 // Solution
+class LinkedList {
+  constructor(values) {
+    if (values.length < 1) {
+      this.head = null;
+      this.next = null;
+    } else {
+      this.head = new Node(values[0]);
+      let currNode = this.head;
+      for (let i = 1; i < values.length; i++) {
+        const nextNode = new Node(values[i]);
+        currNode.next = nextNode;
+        currNode = nextNode;
+      }
+    }
+  }
+
+  toArray() {
+    const array = [];
+    let currNode = this.head;
+    while(currNode !== null) {
+      array.push(currNode.value);
+      currNode = currNode.next;
+    }
+    return array;
+  }
+}
+
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
 
 // Test Cases
+const values = [3, 5, 8, 5, 10, 2, 1];
+const linkedList = new LinkedList(values)
+console.log(linkedList.toArray(), 'should be', values);
