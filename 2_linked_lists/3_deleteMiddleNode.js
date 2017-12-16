@@ -44,11 +44,21 @@ class LinkedListNode {
   }
 
   deleteNode() {
-    let curr = this;
-    while (curr.next) {
-      this.value = this.next.value;
-      curr = curr.next;
+    // init follower node as this node
+    let followerNode = this;
+    // init leader node as next node
+    let leaderNode = this.next;
+    // while (leader is not null)
+    while (leaderNode !== null) {
+      // change value of follower node to leader value
+      followerNode.value = leaderNode.value;
+      // change follow node to leader node
+      followerNode = leaderNode;
+      // change leader node to next node
+      leaderNode = leaderNode.next;
     }
+    // point follower node to null
+    followerNode.next = null;
   }
 };
 
@@ -58,5 +68,8 @@ let linkedList = new LinkedListNode(1);
 linkedList.append(2);
 linkedList.append(3);
 linkedList.append(4);
-console.log(linkedList.toArray(), 'should be', [1, 2, 3, 4]);
-
+linkedList.append(5);
+console.log(linkedList.toArray(), 'should be', [1, 2, 3, 4, 5]);
+const node = linkedList.getNodeByIndex(2);
+node.deleteNode()
+console.log(linkedList.toArray(), 'should be', [1, 2, 4, 5]);
