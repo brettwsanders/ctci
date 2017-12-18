@@ -59,25 +59,42 @@ class Node {
 }
 
 const sumLists = (firstList, secondList) => {
+  // init both strings
+  let firstString = '';
+  let secondString = '';
   // loop thru first list and prepend to first string
+  let currFirst = firstList.head;
+  while (currFirst !== null) {
+    firstString = String(currFirst.value) + firstString;
+    currFirst = currFirst.next;
+  }
   // loop thru second list and prepend to second string
+  let currSecond = secondList.head;
+  while (currSecond !== null) {
+    secondString = String(currSecond.value) + secondString;
+    currSecond = currSecond.next;
+  }
   // convert both strings to numbers
+  const firstNum = Number(firstString);
+  const secondNum = Number(secondString);
   // add the numbers together
+  const resultNum = firstNum + secondNum;
   // convert result number to string and reverse
+  resultArray = String(resultNum).split("").reverse();
+  resultArray = resultArray.map(i => Number(i));
   // init new list
-  // loop thru characters in string and append to end
-  // return result
+  const resultList = new LinkedList(resultArray);
   return resultList;
 }
 
 // Test Cases
-*
- * Example:
- * Input: (7 -> 1 -> 6) + (5 -> 9 -> 2). That is, 617 + 295
- * Output: 2 -> 1 -> 9. That is, 912
- *
 //
-let first = [7, 1 6];
+// Example:
+// Input: (7 -> 1 -> 6) + (5 -> 9 -> 2). That is, 617 + 295
+// Output: 2 -> 1 -> 9. That is, 912
+//
+//
+let first = [7, 1, 6];
 let second = [5, 9, 2];
 let result = [2, 1, 9];
 let firstLinkedList = new LinkedList(first);
