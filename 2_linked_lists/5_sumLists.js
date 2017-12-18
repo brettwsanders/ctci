@@ -21,5 +21,35 @@
  * */
 
 // Solution
+class LinkedList {
+  constructor(values) {
+    this.head = new Node(values[0]);
+    let curr = this.head;
+    for (let index = 1; index < values.length; index++) {
+      curr.next = new Node(values[index]);
+      curr = curr.next;
+    }
+  }
+
+  append(value) {
+    const last = this.getLastNode();
+    last.next = new Node(value);
+  }
+
+  getLastNode() {
+    let curr = this.head;
+    while (curr.next !== null) {
+      curr = curr.next;
+    }
+    return curr;
+  }
+}
+
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
 
 // Test Cases
