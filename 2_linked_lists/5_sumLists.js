@@ -39,6 +39,16 @@ class LinkedList {
     }
     return curr;
   }
+
+  getAsArray() {
+    const array = [];
+    let curr = this.head;
+    while(curr !== null) {
+      array.push(curr.value);
+      curr = curr.next;
+    }
+    return array;
+  }
 }
 
 class Node {
@@ -46,6 +56,11 @@ class Node {
     this.value = value;
     this.next = null;
   }
+}
+
+const sumLists = (firstList, secondList) => {
+  //
+  return resultList;
 }
 
 // Test Cases
@@ -60,5 +75,11 @@ let second = [5, 9, 2];
 let result = [2, 1, 9];
 let firstLinkedList = new LinkedList(first);
 let secondLinkedList = new LinkedList(second);
+console.log(firstLinkedList.getAsArray(), 'should be', first);
+console.log(secondLinkedList.getAsArray(), 'should be', second);
+let resultList = sumLists(firstLinkedList, secondLinkedList);
+console.log(resultList.getAsArray(), 'should be', result);
+
+
 
 
