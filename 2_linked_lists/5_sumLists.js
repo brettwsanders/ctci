@@ -59,7 +59,14 @@ class Node {
 }
 
 const sumLists = (firstList, secondList) => {
-  //
+  // loop thru first list and prepend to first string
+  // loop thru second list and prepend to second string
+  // convert both strings to numbers
+  // add the numbers together
+  // convert result number to string and reverse
+  // init new list
+  // loop thru characters in string and append to end
+  // return result
   return resultList;
 }
 
