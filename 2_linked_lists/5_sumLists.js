@@ -58,7 +58,7 @@ class Node {
   }
 }
 
-const sumLists = (firstList, secondList) => {
+const sumListsOld = (firstList, secondList) => {
   // init both strings
   let firstString = '';
   let secondString = '';
@@ -85,6 +85,22 @@ const sumLists = (firstList, secondList) => {
   // init new list
   const resultList = new LinkedList(resultArray);
   return resultList;
+}
+
+// recursive solution
+const sumLists = (first, second, result, carry) => {
+  // if first is null and second is null
+    // if carry
+      // add carry to result
+    // return result
+  // init new node value
+  // if first
+    // add first value to new node value
+  // if second
+    // add second value to new node value
+  // if carry
+    // add carry to new node value
+  // return sumLists with updated values
 }
 
 // Test Cases
