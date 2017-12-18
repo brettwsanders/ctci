@@ -90,17 +90,42 @@ const sumListsOld = (firstList, secondList) => {
 // recursive solution
 const sumLists = (first, second, result, carry) => {
   // if first is null and second is null
+  if (first === null && second === null) {
     // if carry
+    if (carry > 0) {
       // add carry to result
-    // return result
+      if (result) {
+        result.append(carry);
+      } else {
+        result = new LinkedList([carry]);
+      }
+    }
+    return result;
+  }
   // init new node value
+  let newNodeValue = 0;
   // if first
+  if (first !== null) {
     // add first value to new node value
+    newNodeValue += first.value;
+  }
   // if second
+  if (second !== null) {
     // add second value to new node value
+    newNodeValue += second.value;
+  }
   // if carry
+  if (carry > 0) {
     // add carry to new node value
+    newNodeValue += carry;
+  }
   // return sumLists with updated values
+  if (result) {
+    result.append(newNodeValue % 10);
+  } else {
+    result = new LinkedList([newNodeValue % 10]);
+  }
+  return sumLists(first.next, second.next, result, Math.floor(newNodeValue / 10));
 }
 
 // Test Cases
