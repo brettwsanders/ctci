@@ -3,10 +3,6 @@
  * digit. The digits are stored in reverse order, such that the 1's digit is at the head of the list. Write a
  * function that adds the two numbers and returns the sum as a linked list.
  *
- * Example:
- * Input: (7 -> 1 -> 6) + (5 -> 9 -> 2). That is, 617 + 295
- * Output: 2 -> 1 -> 9. That is, 912
- *
  * Follow Up: Suppose the digits are stored in forward order. Repeat the above problem.
  *
  * Input:
@@ -53,3 +49,16 @@ class Node {
 }
 
 // Test Cases
+*
+ * Example:
+ * Input: (7 -> 1 -> 6) + (5 -> 9 -> 2). That is, 617 + 295
+ * Output: 2 -> 1 -> 9. That is, 912
+ *
+//
+let first = [7, 1 6];
+let second = [5, 9, 2];
+let result = [2, 1, 9];
+let firstLinkedList = new LinkedList(first);
+let secondLinkedList = new LinkedList(second);
+
+
