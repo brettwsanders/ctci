@@ -17,11 +17,35 @@
  */
 
 class LinkedList {
-  constructor() {}
+  constructor(values) {
+    this.head = new Node(values[0]);
+    this.tail = this.head;
+    for (let index = 1; index < values.length; index++) {
+      this.append(new Node(values[index]));
+    }
+  }
+
+  append(value) {
+    this.tail.next = new Node(value);
+    this.tail = this.tail.next;
+  }
+
+  toArray() {
+    const array = [];
+    let curr = this.head;
+    while (curr !== null) {
+      array.push(curr.value);
+      curr = curr.next;
+    }
+    return array;
+  }
 }
 
 class Node {
-  constructor() {}
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
 }
 
 /*
