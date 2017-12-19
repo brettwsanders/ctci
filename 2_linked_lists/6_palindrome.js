@@ -10,6 +10,7 @@
  * Space Complexity:
  *
  * Ideas:
+ * - function must iterate to end of linkedList (e.g. racecarw)
  * */
 
 // Solution
@@ -49,6 +50,13 @@ class LinkedListNode {
   }
 
   isPalindrome() {
+    const array = this.toArray();
+    for (let index = 0; index < array.length / 2; index++) {
+      if (array[index] !== array[array.length - 1 - index]) {
+        return false;
+      }
+    }
+    return true;
   }
 }
 
