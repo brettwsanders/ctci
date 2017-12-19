@@ -20,16 +20,22 @@ class LinkedListNode {
   }
 
   append(value) {
-    this.next = new LinkedListNode(value)
+    let curr = this;
+    while (curr.next !== null) {
+      curr = curr.next;
+    }
+    curr.next = new LinkedListNode(value)
   }
 
   remove() {
     let curr = this;
-    while (curr.next.next !== null) {
+    if (curr.next.next !== null) {
       curr.value = curr.next.value;
-      curr = curr.next;
+      curr.next = curr.next.next;
+    } else {
+      curr.value = curr.next.value;
+      curr.next = null;
     }
-    curr.next = null;
   }
 
   toArray() {
@@ -37,10 +43,18 @@ class LinkedListNode {
     let curr = this;
     while (curr !== null) {
       array.push(curr.value);
+      curr = curr.next;
     }
     return array;
   }
 }
 
 // Test Cases
-
+const linkedList = new LinkedListNode(6);
+linkedList.append(7);
+linkedList.append(8);
+linkedList.append(9);
+linkedList.append(10);
+console.log(linkedList.toArray(), 'should equal', [6, 7, 8, 9, 10]);
+linkedList.remove();
+console.log(linkedList.toArray(), 'should equal', [7, 8, 9, 10]);
