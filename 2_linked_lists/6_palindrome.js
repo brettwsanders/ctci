@@ -60,25 +60,33 @@ class LinkedListNode {
   }
 }
 
+const createLinkedListFromArray = array => {
+  if (array.length < 1) throw new Error('array has no items');
+  const list = new LinkedListNode(array[0])
+  for (let index = 1; index < array.length; index++) {
+    list.append(array[index]);
+  }
+  return list;
+};
+
 // Test Cases
 // Case 1
-let linkedList = new LinkedListNode(6);
-linkedList.append(7);
-linkedList.append(8);
-linkedList.append(9);
-linkedList.append(10);
-console.log(linkedList.toArray(), 'should equal', [6, 7, 8, 9, 10]);
+let array = [6, 7, 8, 9, 10];
+let afterRemoval = [7, 8, 9, 10]
+let linkedList = createLinkedListFromArray(array)
+console.log(linkedList.toArray(), 'should equal', array);
 linkedList.remove();
-console.log(linkedList.toArray(), 'should equal', [7, 8, 9, 10]);
+console.log(linkedList.toArray(), 'should equal', afterRemoval);
 console.log(linkedList.isPalindrome(), 'should be', false);
 
 // Case 2
-linkedList = new LinkedListNode('r');
-linkedList.append('a');
-linkedList.append('c');
-linkedList.append('e');
-linkedList.append('c');
-linkedList.append('a');
-linkedList.append('r');
-console.log(linkedList.toArray(), 'should equal', ['r', 'a', 'c', 'e', 'c', 'a', 'r']);
+array = ['r', 'a', 'c', 'e', 'c', 'a', 'r'];
+linkedList = createLinkedListFromArray(array);
+console.log(linkedList.toArray(), 'should equal', array);
 console.log(linkedList.isPalindrome(), 'should be', true);
+
+// Case 3
+array = ['r', 'a', 'c', 'e', 'c', 'a', 'r', 'e'];
+linkedList = createLinkedListFromArray(array);
+console.log(linkedList.toArray(), 'should equal', ['r', 'a', 'c', 'e', 'c', 'a', 'r', 'e']);
+console.log(linkedList.isPalindrome(), 'should be', false);
