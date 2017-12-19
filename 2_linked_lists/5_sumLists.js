@@ -89,6 +89,8 @@ const sumListsOld = (firstList, secondList) => {
 
 // recursive solution
 const sumLists = (first, second, result, carry) => {
+  if (first && first.head) first = first.head;
+  if (second && second.head) second = second.head;
   // if first is null and second is null
   if (first === null && second === null) {
     // if carry
