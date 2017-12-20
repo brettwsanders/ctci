@@ -16,23 +16,23 @@
  *
  */
 
-class LinkedList {
-  constructor(values) {
-    this.head = new Node(values[0]);
-    this.tail = this.head;
-    for (let index = 1; index < values.length; index++) {
-      this.append(new Node(values[index]));
-    }
+class LinkedListNode {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
   }
 
   append(value) {
-    this.tail.next = new Node(value);
-    this.tail = this.tail.next;
+    let curr = this;
+    while (curr.next !== null) {
+      curr = curr.next;
+    }
+    curr.next = new LinkedListNode(value);
   }
 
   toArray() {
     const array = [];
-    let curr = this.head;
+    let curr = this;
     while (curr !== null) {
       array.push(curr.value);
       curr = curr.next;
@@ -41,11 +41,12 @@ class LinkedList {
   }
 }
 
-class Node {
-  constructor(value) {
-    this.value = value;
-    this.next = null;
+const createLinkedList = values => {
+  const list = new LinkedListNode(values[0]);
+  for (let index = 1; index < values.length; index++) {
+    list.append(values[index]);
   }
+  return list;
 }
 
 /*
@@ -53,5 +54,12 @@ class Node {
  *
  * Case 1
  */
+let array = 'heysupdude'.split("");
+let linkedList = createLinkedList(array);
+console.log(linkedList.toArray(), 'should be', array);
 
+// Case 2
+array = '1234567'.split("");
+linkedList = createLinkedList(array);
+console.log(linkedList.toArray(), 'should be', array);
 
