@@ -23,11 +23,31 @@ class LinkedListNode {
   }
 
   append(value) {
+    const tail = this.getTail()
+    tail.next = new LinkedListNode(value);
+  }
+
+  getNodeAtIndex(target) {
+    let node = this;
+    let index = 0;
+    while (index < target && node.next !== null) {
+      node = node.next;
+      index++;
+    }
+    return node;
+  }
+
+  getTail() {
     let curr = this;
     while (curr.next !== null) {
       curr = curr.next;
     }
-    curr.next = new LinkedListNode(value);
+    return curr;
+  }
+
+  appendNode(node) {
+    const tail = this.getTail();
+    tail.next = node;
   }
 
   toArray() {
@@ -59,7 +79,12 @@ let linkedList = createLinkedList(array);
 console.log(linkedList.toArray(), 'should be', array);
 
 // Case 2
-array = '1234567'.split("");
+array = '123'.split("");
+let array2 = '456789'.split("");
 linkedList = createLinkedList(array);
+linkedList2 = createLinkedList(array2);
 console.log(linkedList.toArray(), 'should be', array);
-
+console.log(linkedList2.toArray(), 'should be', array2);
+let node = linkedList2.getNodeAtIndex(3);
+linkedList.appendNode(node);
+console.log(linkedList.toArray(), 'should be', '123789'.split(""));
