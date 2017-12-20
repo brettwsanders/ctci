@@ -99,18 +99,19 @@ const intersection = (linkedList1, linkedList2) => {
  *
  * Case 1
  */
-let array = 'heysupdude'.split("");
-let linkedList = createLinkedList(array);
-console.log(linkedList.toArray(), 'should be', array);
+let array0 = 'heysupdude'.split("");
+let linkedList0 = createLinkedList(array0);
+console.log(linkedList0.toArray(), 'should be', array0);
 
 // Case 2
-array = '123'.split("");
+let array1 = '123'.split("");
 let array2 = '456789'.split("");
-linkedList = createLinkedList(array);
-linkedList2 = createLinkedList(array2);
-console.log(linkedList.toArray(), 'should be', array);
+let linkedList = createLinkedList(array1);
+let linkedList2 = createLinkedList(array2);
+console.log(linkedList.toArray(), 'should be', array1);
 console.log(linkedList2.toArray(), 'should be', array2);
 let node = linkedList2.getNodeAtIndex(3);
 linkedList.appendNode(node);
 console.log(linkedList.toArray(), 'should be', '123789'.split(""));
 console.log(intersection(linkedList, linkedList2), 'should be', true);
+console.log(intersection(linkedList0, linkedList2), 'should be', false);
