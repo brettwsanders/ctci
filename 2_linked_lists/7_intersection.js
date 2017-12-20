@@ -70,27 +70,20 @@ const createLinkedList = values => {
 }
 
 const intersection = (linkedList1, linkedList2) => {
-  // init head 1
   const head1 = linkedList1;
   let node1 = head1;
-  // init head 2
   const head2 = linkedList2;
   let node2;
-  // loop through linkedList1
   while (node1 !== null) {
     node2 = head2;
-    // loop through linkedList2
     while (node2 !== null) {
-      // if nodes of 1 equals node of 2
       if (node1 === node2) {
-        // return true
         return true;
       }
       node2 = node2.next;
     }
     node1 = node1.next;
   }
-  // return false
   return false;
 }
 
