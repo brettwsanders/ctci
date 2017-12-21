@@ -14,3 +14,45 @@
  * Contraints:
  * Edge Cases:
  */
+
+class LinkedListNode {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+
+  appendToTail(value) {
+    const tail = this.getTail();
+    if (tail) {
+      tail.next = new LinkedListNode(value);
+      return tail.next;
+    } else {
+      return 'no tail';
+    }
+  }
+
+  appendNodeToTail(node) {
+    const tail = this.getTail();
+    if (tail) {
+      tail.next = node;
+      return tail.next;
+    } else {
+      return 'no tail';
+    }
+  }
+
+  getTail() {
+    const head = this;
+    let node = this;
+    const seenHead = 0;
+    while (node.next !== null) {
+      // return false if circular
+      if (node === head) {
+        seenHead++;
+        if (seenHead > 1) return false;
+      }
+      node = node.next;
+    }
+    return node;
+  }
+}
