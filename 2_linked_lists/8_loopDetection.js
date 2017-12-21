@@ -43,17 +43,18 @@ class LinkedListNode {
 
   getTail() {
     const head = this;
-    let node = this;
-    let seenHead = 0;
-    while (node.next !== null) {
-      // return false if circular
-      if (node === head) {
-        seenHead++;
-        if (seenHead > 1) return false;
+    const nodes = [];
+    let currNode = this;
+    while (currNode.next !== null) {
+      for (let i = 0; i < nodes.length; i++) {
+        if (currNode === nodes[i]) {
+          return currNode;
+        }
       }
-      node = node.next;
+      nodes.push(currNode);
+      currNode = currNode.next;
     }
-    return node;
+    return currNode;
   }
 }
 
@@ -68,7 +69,8 @@ linkedList.appendToTail('B');
 const nodeC = linkedList.appendToTail('C');
 linkedList.appendToTail('D');
 linkedList.appendToTail('E');
+console.log(linkedList.getTail().value, 'should be', 'E');
 linkedList.appendNodeToTail(nodeC);
-
+console.log(linkedList.getTail().value, 'should be', 'C');
 
 
