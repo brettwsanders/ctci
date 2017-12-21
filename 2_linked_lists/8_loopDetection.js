@@ -44,7 +44,7 @@ class LinkedListNode {
   getTail() {
     const head = this;
     let node = this;
-    const seenHead = 0;
+    let seenHead = 0;
     while (node.next !== null) {
       // return false if circular
       if (node === head) {
@@ -56,3 +56,19 @@ class LinkedListNode {
     return node;
   }
 }
+
+/* EXAMPLE
+ * Input: A -> B -> C -> D -> E -> C [the same C as earlier]
+ * Output: C
+ */
+
+// Test Cases
+const linkedList = new LinkedListNode('A');
+linkedList.appendToTail('B');
+const nodeC = linkedList.appendToTail('C');
+linkedList.appendToTail('D');
+linkedList.appendToTail('E');
+linkedList.appendNodeToTail(nodeC);
+
+
+
