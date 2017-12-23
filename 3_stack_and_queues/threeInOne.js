@@ -33,6 +33,7 @@ class multipleStacks {
   pop(array) {
     if (this.isOutOfBounds(array)) return 'out of bounds';
     this.prepArrayForManipulation(array);
+    if (this.isEmpty(array)) return null;
     return this.array.pop();
   }
 
@@ -81,7 +82,7 @@ class multipleStacks {
 // array3 = [x, y, z]
 
 // Test Cases
-let threeStacks = multipleStacks();
+let threeStacks = new multipleStacks(3);
 threeStacks.push('h', 2);
 console.log(threeStacks.peek(2), 'should be h');
 console.log(threeStacks.isEmpty(2), 'should be false');
