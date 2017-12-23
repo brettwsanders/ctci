@@ -15,30 +15,60 @@
  *
  */
 
-class threeInOne {
-  const map = { '1': 'start1', '2': 'start2', '3': 'start3' }
-  constructor() {
-    this.array = ['start1', 'start2', 'start3'];
+class multipleStacks {
+  constructor(stacks) {
+    this.stacks = stacks;
+    this.array = [];
+    for (let i = 1; i <= stacks; i++) {
+      this.array.push('start' + i)
+    }
   }
 
   push(value, array) {
     if (this.isOutOfBounds(array)) return 'out of bounds';
+    this.prepArrayForManipulation(array);
+    this.array.push(value);
   }
 
   pop(array) {
     if (this.isOutOfBounds(array)) return 'out of bounds';
+    this.prepArrayForManipulation(array);
+    return this.array.pop();
   }
 
   peek(array) {
     if (this.isOutOfBounds(array)) return 'out of bounds';
+    this.prepArrayForManipulation(array);
+    return this.array[this.array.length - 1];
   }
 
   isEmpty(array) {
     if (this.isOutOfBounds(array)) return 'out of bounds';
+    this.prepArrayForManipulation(array);
+    if (this.array[this.array.length - 1] === String('start' + array)) return true;
+    return false;
   }
 
   isOutOfBounds(array) {
-    if (array !== 1 && array !== 2 && arary !== 3) return 'out of bounds';
+    if (array < 1 || array > this.stacks) return true;
+    return false;
+  }
+
+  prepArrayForManipulation(array) {
+    let arrayToBeAtStart = array + 1;
+    if (arrayToBeAtStart > 3) {
+      arrayToBeAtStart = arrayToBeAtStart % this.stacks
+    }
+    this.loopUntilSetAtStart('start' + arrayToBeAtStart);
+  }
+
+  loopUntilSetAtStart(startValue) {
+    let count = 0;
+    while(this.array[0] !== startValue && count <= this.array.length) {
+      const value = this.array.shift();
+      this.array.push(value);
+      count++;
+    }
   }
 
   getArray() {
@@ -51,7 +81,7 @@ class threeInOne {
 // array3 = [x, y, z]
 
 // Test Cases
-let threeStacks = threeInOne();
+let threeStacks = multipleStacks();
 threeStacks.push('h', 2);
 console.log(threeStacks.peek(2), 'should be h');
 console.log(threeStacks.isEmpty(2), 'should be false');
