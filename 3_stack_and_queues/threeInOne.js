@@ -12,7 +12,6 @@
  *   [ 'start', a, b, 'start', h, i, j, k, 'start', x, y, z ]
  *
  * - single array and stacks are added in at beginning for array1, middle for array 2, end for array 3
- *
  */
 
 class multipleStacks {
@@ -23,7 +22,6 @@ class multipleStacks {
       this.array.push('start' + i)
     }
   }
-
   push(value, array) {
     if (this.isOutOfBounds(array)) return 'out of bounds';
     this.prepArrayForManipulation(array);
@@ -76,10 +74,6 @@ class multipleStacks {
     return this.array;
   }
 }
-
-// array1 = [a, b]
-// array2 = [h, i, j, k]
-// array3 = [x, y, z]
 
 // Test Cases
 let threeStacks = new multipleStacks(3);
