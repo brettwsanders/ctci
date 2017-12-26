@@ -4,6 +4,12 @@
  * array1 = [a, b]
  * array2 = [h, i, j, k]
  * array3 = [x, y, z]
+ *
+ * Input:
+ * Output:
+ * Constraints: single array, three stacks
+ * Edge Cases:
+ *
  * * Solution:
  * - single array is made up of three arrays
  *   [ [a, b], [h, i, j, k], [x, y, z]]
