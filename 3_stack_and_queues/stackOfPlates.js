@@ -12,6 +12,39 @@
  */
 
 
+class SetOfStacks {
+    constructor(value, maxHeight) {
+        const stack = new Stack(value);
+        this.stacks = [stack];
+        this.maxHeight = maxHeight;
+    }
+
+    push(value) {
+        // get last stack in set of stacks
+        const topStack = this.peek();
+        // check the size of the stack
+        // if size is equal to max height
+        if (topStack.size() === this.maxHeight) {
+            // create a new stack
+            const newStack = new Stack(value);
+            // push stack into set of stacks
+            this.stacks.push(newStack);
+        } else {
+            // push value into stack
+            topStack.push(value);
+        }
+    }
+
+    pop() {
+    }
+
+    // return the top stack in the set of stacks
+    peek() {
+        return this.stacks[this.stacks.length - 1]
+    }
+}
+
+
 class Stack {
     constructor(value) {
         this.data = [value];
@@ -23,6 +56,10 @@ class Stack {
 
     pop() {
         return this.data.splice(this.size() - 1, 1)[0];
+    }
+
+    peek() {
+        return this.data[this.size() - 1];
     }
 
     size() {
