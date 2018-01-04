@@ -36,6 +36,18 @@ class SetOfStacks {
     }
 
     pop() {
+        if (this.stacks.length === 0) return false;
+        // get top stack
+        const topStack = this.peek();
+        // pop value from stack
+        const value = topStack.pop();
+        // check if top stack has length more than 0
+        // if length is 0
+        if (topStack.size() === 0) {
+            // delete the top stack from set of stacks
+            this.stacks.splice(this.stacks.length - 1, 1);
+        }
+        return value;
     }
 
     // return the top stack in the set of stacks
@@ -55,6 +67,7 @@ class Stack {
     }
 
     pop() {
+        if (this.size() === 0) return false;
         return this.data.splice(this.size() - 1, 1)[0];
     }
 
@@ -77,3 +90,22 @@ stack.push(3); /// [1, 2, 3]
 stack.push(4); // [1, 2, 3, 4]
 console.log(stack.pop(), 'should be 4');
 console.log(stack.size(), 'should be 3');
+
+let setOfStacks = new SetOfStacks(1, 4);
+setOfStacks.push(2);
+setOfStacks.push(3);
+setOfStacks.push(4);
+setOfStacks.push(5);
+setOfStacks.push(6);
+setOfStacks.push(7);
+setOfStacks.push(8);
+setOfStacks.push(9);
+setOfStacks.push(10);
+console.log(setOfStacks);
+setOfStacks.pop();
+setOfStacks.pop();
+setOfStacks.pop();
+setOfStacks.pop();
+setOfStacks.pop();
+setOfStacks.pop();
+console.log(setOfStacks);
