@@ -61,6 +61,7 @@ class Node {
 }
 
 const doesRouteExist = (node1, node2) => {
+    return false;
 };
 
 // approach
@@ -69,13 +70,24 @@ const doesRouteExist = (node1, node2) => {
 
 // Test Cases
 const graph = new Graph(1);
-graph.roots[0].addChild(2);
 graph.roots[0].addChild(3);
-graph.roots[0].children[1].addChild(4);
-graph.roots[0].children[1].addChild(5);
+graph.roots[0].addChild(2);
+graph.roots[0].children[0].addChild(5);
+graph.roots[0].children[0].addChild(4);
 
 console.log(graph.getSize(), 'should be', 5);
 
+let node1 = graph.roots[0]; // 1
+let node2 = graph.roots[0].children[0].children[0]; // 5
+console.log(node1.value, 'should be', 1);
+console.log(node2.value, 'should be', 5);
+console.log(doesRouteExist(node1, node2), 'should be', true);
+
+node1 = graph.roots[0].children[1]; // 2
+node2 = graph.roots[0].children[0].children[1]; // 4
+console.log(node1.value, 'should be', 2);
+console.log(node2.value, 'should be', 4);
+console.log(doesRouteExist(node1, node2), 'should be', false);
 
 
 
