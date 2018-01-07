@@ -8,19 +8,17 @@
  * E: array size of 1, negative nums, invalid input
  */
 
-class Node = {
+class Node {
     constructor(val) {
         this.val = val;
-        this.children = [undefined, undefined];
+        this.children = [];
     }
 
-    addLeft(val) {
-        const node = new Node(val);
+    addLeft(node) {
         this.children[0] = node;
     }
 
-    addRight() {
-        const node = new Node(val);
+    addRight(node) {
         this.children[1] = node;
     }
 };
@@ -31,13 +29,25 @@ const minimalTree = array => {
     // if length of array is 0, return
     if (array.length === 0) return;
     // if length of array is 1, return new node
-    if (array.length === 1) return new Node(array[0]);
+    if (array.length === 1) {
+        return new Node(array[0]);
+    }
     // create a node from the middle node of the array 
+    const middleIndex = Math.floor(array.length / 2);
+    const node = new Node(array[middleIndex]);
+    console.log('node is', JSON.stringify(node, null, 2));
+    const leftArray = array.slice(0, middleIndex);
+    const rightArray = array.slice(middleIndex + 1);
     // the left branch is minimalArray(leftArray)
+    if (leftArray.length) node.addLeft(minimalTree(leftArray));
     // the right branch is minimalArray(rightArray)
+    if (rightArray.length) node.addRight(minimalTree(rightArray));
     // return node
+    return node;
 }
 
 
 // Test Cases
 let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+let result = minimalTree(array);
+console.log(JSON.stringify(result, null, 2));
