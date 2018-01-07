@@ -8,9 +8,49 @@
  * E:
  */
 
+class BinaryTreeNode {
+    constructor(value) {
+        this.value = value;
+        this.children = [];
+    }
+
+    insert(value) {
+        // init queue with self
+        let queue = [this];
+        // while queue has length
+        while (queue.length) {
+            // check if left or right spot is open
+            const node = queue.shift();
+            if (node.children[0] === undefined) {
+                // create node and insert and return
+                node.children[0] = new BinaryTreeNode(value);
+                return;
+            } else if (node.children[1] === undefined) {
+                // create node and insert and return
+                node.children[1] = new BinaryTreeNode(value);
+                return;
+            } else {
+            // enqueue children
+                queue = queue.concat(node.children);
+            }
+        }
+    }
+
+}
+
 const listOfDepths = binaryTree => {
 
 };
 
 // Test Cases
+
+const btNode = new BinaryTreeNode(0);
+for (let i = 1; i < 10; i++) {
+    btNode.insert(i);
+}
+
+console.log(JSON.stringify(btNode, null, 2));
+
+
+
 
