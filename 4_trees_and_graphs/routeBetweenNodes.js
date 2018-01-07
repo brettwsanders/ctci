@@ -75,23 +75,28 @@ const doesRouteExist = (node1, node2) => {
     // create queue starting with all adjacents of node1
     const queue = [].concat(node1.children);
     // while queue has length
-    while (queue.length) {
+    let found = false;
+    while (queue.length && !found) {
         // get node by dequeue queue
         const node = queue.shift();
         // if node is equal to node2 then return true
-        if (node === node2) {
-            return true;
-        }
-        // else enqueue all the nodes adjacents
-        else {
-        // enqueue all the nodes children
-            node.children.forEach(node => {
-                queue.push(node);
-            });
+        if (!node.visited) {
+            if (node === node2) {
+                found = true;
+            }
+            // else enqueue all the nodes adjacents
+            else {
+                // enqueue all the nodes children
+                node.children.forEach(node => {
+                    queue.push(node);
+                });
+            }
+            node.visited = true;
         }
     }
     // return false if completing full search and never finding node2
-    return false;
+    node1.unvisitAll();
+    return found;
 };
 
 // approach
@@ -126,10 +131,11 @@ graph.addRoot(8);
 node2 = graph.roots[1];
 console.log(node1.value, 'should be', 1);
 console.log(node2.value, 'should be', 8);
-console.log(doesRouteExist(node1, node2), 'should be infinite loop');
+console.log(doesRouteExist(node1, node2), 'should be false');
 
 // lessons learned
 // - best to call them adjacents than children (children is more appropriate in a tree structure)
+// - when traversing graphs using dfs or bfs, need to keep track of visited nodes and then unvisit at the end of search
 
 // questions
 // - is there a better way to get specific nodes (e.g. when setting up the problem and needing to get leaf at bottom of branch to input as param for doesRouteExist
