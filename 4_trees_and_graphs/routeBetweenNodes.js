@@ -60,7 +60,28 @@ class Node {
     }
 }
 
+// question - we can still get stuck in infinite loop if not setting visited=true right?
 const doesRouteExist = (node1, node2) => {
+    // do breadth first search
+    // create queue starting with all adjacents of node1
+    const queue = [].concat(node1.children);
+    // while queue has length
+    while (queue.length) {
+        // get node by dequeue queue
+        const node = queue.shift();
+        // if node is equal to node2 then return true
+        if (node === node2) {
+            return true;
+        }
+        // else enqueue all the nodes adjacents
+        else {
+        // enqueue all the nodes children
+            node.children.forEach(node => {
+                queue.push(node);
+            });
+        }
+    }
+    // return false if completing full search and never finding node2
     return false;
 };
 
@@ -89,6 +110,8 @@ console.log(node1.value, 'should be', 2);
 console.log(node2.value, 'should be', 4);
 console.log(doesRouteExist(node1, node2), 'should be', false);
 
+// lessons learned
+// - best to call them adjacents than children (children is more appropriate in a tree structure)
 
-
-
+// questions
+// - is there a better way to get specific nodes (e.g. when setting up the problem and needing to get leaf at bottom of branch to input as param for doesRouteExist
