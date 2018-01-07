@@ -39,7 +39,16 @@ class BinaryTreeNode {
 }
 
 const listOfDepths = binaryTree => {
-
+    // init object
+    // init currentDepth
+    // init queue as empty array
+    // init nextQueue as empty array
+    // while (queue has length)
+        // dequeue node
+        // add node to object at current depth (create if not created yet)
+        // add nodes children to nextQueue
+        // if queue is empty then set queue to nextQueue and reset nextQueue and increment currentDepth
+    // return results
 };
 
 // Test Cases
