@@ -38,6 +38,10 @@ class Node {
         this.children.push(node);
     }
 
+    addChildNode(node) {
+        this.children.push(node);
+    }
+
     // dfs
     getSize() {
         return this.children.reduce((size, child) => {
@@ -45,9 +49,9 @@ class Node {
                 return size;
             } else {
                 child.visited = true;
-                return size + child.getSize();
+                return size + 1 + child.getSize();
             }
-        }, 1);
+        }, 0);
     }
 
     unvisitAll() {
@@ -93,19 +97,21 @@ const doesRouteExist = (node1, node2) => {
 const graph = new Graph(1);
 graph.roots[0].addChild(3);
 graph.roots[0].addChild(2);
+let node = graph.roots[0];
+graph.roots[0].children[0].addChildNode(node);
 graph.roots[0].children[0].addChild(5);
 graph.roots[0].children[0].addChild(4);
 
 console.log(graph.getSize(), 'should be', 5);
 
 let node1 = graph.roots[0]; // 1
-let node2 = graph.roots[0].children[0].children[0]; // 5
+let node2 = graph.roots[0].children[0].children[1]; // 5
 console.log(node1.value, 'should be', 1);
 console.log(node2.value, 'should be', 5);
 console.log(doesRouteExist(node1, node2), 'should be', true);
 
 node1 = graph.roots[0].children[1]; // 2
-node2 = graph.roots[0].children[0].children[1]; // 4
+node2 = graph.roots[0].children[0].children[2]; // 4
 console.log(node1.value, 'should be', 2);
 console.log(node2.value, 'should be', 4);
 console.log(doesRouteExist(node1, node2), 'should be', false);
