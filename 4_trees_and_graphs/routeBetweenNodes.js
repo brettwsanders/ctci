@@ -9,6 +9,11 @@ class Graph {
         this.roots = [node];
     }
 
+    addRoot(value) {
+        const node = new Node(value);
+        this.roots.push(node);
+    }
+
     // returns the number of nodes in graph, using dfs search
     getSize() {
         const size = this.roots.reduce((acc, root) => {
@@ -115,6 +120,13 @@ node2 = graph.roots[0].children[0].children[2]; // 4
 console.log(node1.value, 'should be', 2);
 console.log(node2.value, 'should be', 4);
 console.log(doesRouteExist(node1, node2), 'should be', false);
+
+node1 = graph.roots[0]; // 1
+graph.addRoot(8);
+node2 = graph.roots[1];
+console.log(node1.value, 'should be', 1);
+console.log(node2.value, 'should be', 8);
+console.log(doesRouteExist(node1, node2), 'should be infinite loop');
 
 // lessons learned
 // - best to call them adjacents than children (children is more appropriate in a tree structure)
