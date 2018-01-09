@@ -21,9 +21,14 @@ class BinaryTreeNode {
     }
 }
 
-const isBST = bt => {
-
-}
+// recursively look at each node and confirm that left is less, and right is more
+const isBST = btn => {
+    // base case
+    // if leaf or undefined, return true
+    // if left child exists, and value is more than node, return false
+    // if right child exists, and value is less than or equal than node, return false
+    // return isBST(left) && isBST(right)
+};
 
 // Test Cases
 const bst = new BinaryTreeNode(4);
