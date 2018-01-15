@@ -62,3 +62,24 @@ console.log(successor(bottomLeftLeft).value, 'should be', 2);
 console.log(successor(bottomLeftMid).value, 'should be', 4);
 console.log(successor(bottomRightMid).value, 'should be', 6);
 console.log(successor(bottomRightRight), 'should be', null);
+
+
+bst = new BinarySearchTreeNode(3);
+let six = bst.addRight(6);
+let seven = six.addRight(7);
+let four = six.addLeft(4);
+let five = four.addRight(5);
+let threeFive = four.addLeft(3.5);
+let threeSix = threeFive.addRight(3.6);
+let threeFour = threeFive.addLeft(3.4);
+let threeOne = threeFour.addLeft(3.1);
+
+console.log(successor(bst).value, 'should be', 3.1);
+
+
+
+
+
+
+
+
