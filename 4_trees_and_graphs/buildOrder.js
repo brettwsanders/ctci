@@ -7,8 +7,57 @@
 
 // Notes
 // if every project is dependent on another project, no build order
-const buildOrder = (project, dependencies) => {
+const buildOrder = (projects, dependencies) => {
+    let built = {};
     let order = [];
+    let currSet = [];
+
+    // convert dependencies to hash for quick lookup
+    let deps = dependencies.reduce((acc, dep) => {
+        const key = dep[0];
+        const value = dep[1];
+        acc[key] = value
+        return acc;
+    }, {});
+    //console.log('deps are', deps);
+
+    // convert dependencies to hash for quick lookup
+    let depsReversed = dependencies.reduce((acc, dep) => {
+        const key = dep[1];
+        const value = dep[0];
+        if (acc[key]) {
+            acc[key].push(value);
+        } else {
+            acc[key] = [value];
+        }
+        return acc;
+    }, {});
+    //console.log('depsReversed are', depsReversed);
+
+    // find projects with no dependencies and add to currSet and built
+    projects.forEach(project => {
+        if (deps[project] === undefined) {
+            built[project] = true;
+            currSet.push(project);
+        }
+    });
+    
+    if (currSet.length === 0) return false; // all projects have dependencies so no build order
+
+    // find projects whose dependency has been built and add to nextSet
+
+    let nextSet;
+    while (currSet.length) {
+        nextSet = [];
+        currSet.forEach(project => {
+            if (depsReversed[project] !== undefined) {
+                nextSet = nextSet.concat(depsReversed[project]);
+            }
+        })
+        order = order.concat(currSet);
+        currSet = nextSet;
+    }
+
     return order;
 };
 
