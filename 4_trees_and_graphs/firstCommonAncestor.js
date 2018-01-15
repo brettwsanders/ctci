@@ -1,6 +1,5 @@
 /*
- * First Common Ancestor: Design an algorithm and write code to find the first common ancestor
- * of two nodes in a binary tree. Avoid storing additional nodes in a data structure. NOTE: This is not
+ * First Common Ancestor: Design an algorithm and write code to find the first common ancestor * of two nodes in a binary tree. Avoid storing additional nodes in a data structure. NOTE: This is not
  * necessarily a binary search tree.
  *
  * I: two nodes of binary tree
@@ -19,19 +18,19 @@ class binaryTreeNode {
     get left() {
         return this.children[0];
     }
-    
+
     get right() {
         return this.children[1];
     }
 
     addLeft(value) {
         this.addChildNode(value, 0);
-        return this.left();
+        return this.left;
     }
 
     addRight(value) {
         this.addChildNode(value, 1);
-        return this.left();
+        return this.right;
     }
 
     addChildNode(value, index) {
@@ -50,12 +49,30 @@ const firstCommonAncestor = (node1, node2) => {
     const node2Path = [];
     let curr1 = node1.parent;
     let curr2 = node2.parent;
-    // while curr1 and curr2 are not null
+    // while curr1 and curr2 are defined
+    while (curr1 !== undefined || curr2 !== undefined) {
+        if (curr1 === curr2) return curr1;
         // if curr1, check if it exists anywhere in node2Path and return node if found
+        if (curr1 !== undefined) {
+            if (node2Path.includes(curr1)) {
+                return curr1;
+            }
+        }
         // if curr2, check if it exists anywhere in node1Path and return node if found
+        if (curr2 !== undefined) {
+            if (node1Path.includes(curr2)) {
+                return curr2;
+            }
+        }
         // add both to paths
+        node1Path.push(curr1);
+        node2Path.push(curr2);
         // update both currs to be parents
+        if (curr1 !== undefined) curr1 = curr1.parent;
+        if (curr2 !== undefined) curr2 = curr2.parent;
+    }
     // return false if never found
+    return false;
 };
 
 // Test Cases
@@ -71,7 +88,7 @@ const o = n.addRight('o');
 
 console.log(firstCommonAncestor(j, o).value, 'should be p');
 console.log(firstCommonAncestor(j, m).value, 'should be x');
-console.log(firstCommonAncestor(x, o).value, 'should be null');
+console.log(firstCommonAncestor(bt, o).value, 'should be false');
 console.log(firstCommonAncestor(t, y).value, 'should be x');
 
 
