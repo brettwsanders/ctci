@@ -39,6 +39,25 @@ class binaryTreeNode {
             this.children[index] = node;
         }
     }
-
 }
- 
+
+// Test Cases
+let bt = new binaryTreeNode('x');
+const y = bt.addLeft('y');
+const p = bt.addRight('p');
+const t = y.addLeft('t');
+const z = y.addRight('z');
+const m = z.addRight('m');
+const j = p.addLeft('j');
+const n = p.addRight('n');
+const o = n.addRight('o');
+
+
+
+
+
+
+
+
+
+
