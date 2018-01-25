@@ -33,13 +33,38 @@ const findPath = (matrix, curr = [0, 0], path = []) => {
 };
 
 // Test Cases
-let matrix = [
+let matrix;
+let result;
+
+// Test Case 1
+matrix = [
     [1, 0, 1, 1, 1],
     [1, 0, 1, 1, 1],
     [1, 1, 1, 1, 1],
     [0, 0, 0, 0, 1]
 ];
-let result = ['down', 'down', 'right', 'right', 'right', 'right', 'down'];
+result = ['down', 'down', 'right', 'right', 'right', 'right', 'down'];
 
 console.log(findPath(matrix), 'should be', result);
 
+// Test Case 2
+matrix = [
+    [1, 0, 1, 1, 1],
+    [1, 0, 1, 1, 1],
+    [1, 1, 0, 1, 1],
+    [0, 0, 0, 0, 1]
+];
+result = false;
+
+console.log(findPath(matrix), 'should be', result);
+
+// Test Case 3
+matrix = [
+    [1, 1, 1, 1, 1],
+    [0, 0, 1, 1, 1],
+    [1, 0, 0, 1, 1],
+    [0, 0, 0, 0, 1]
+];
+result = ['right', 'right', 'right', 'right', 'down', 'down', 'down'];
+
+console.log(findPath(matrix), 'should be', result);
