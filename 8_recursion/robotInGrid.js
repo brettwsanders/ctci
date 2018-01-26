@@ -10,7 +10,6 @@
  * C: only move right and down
  */
 
-
 const findPath = (matrix, curr = [0, 0], path = []) => {
     // check if current is equal to bottom right most and return path if true
     if (curr[0] === matrix.length - 1 && curr[1] === matrix[0].length - 1) {
