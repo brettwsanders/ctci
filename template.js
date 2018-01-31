@@ -1,13 +1,14 @@
 /*
  * Description:
  *
- * Input:
- * Output:
- * Constraints:
- * Edge Cases:
+ * Input (I):
+ * Output (O):
+ * Constraints (C):
+ * Edge Cases (E):
  *
  * Time Complexity:
  * Space Complexity:
+ * Data Structure:
  *
  * Ideas:
  * */
