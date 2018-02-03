@@ -6,12 +6,22 @@
  * Follow up: What if the values are not distinct?
  */
 
-const findMagicIndex = arr => {
+const findMagicIndexBrute = arr => {
     for (let i = 0; i < arr.length; i++) {
         if (arr[i] === i) return arr[i];
     }
     return null;
 };
+
+// use binary search and recursion
+const findMagicIndex = arr => {
+    // if no array then return null
+    // get middle of array
+    // check if magic
+    // else if less than i, take second half of array
+    // else if more than i, take first half of array
+    // recurse
+}
 
 //Test Cases
 let a;
