@@ -6,4 +6,6 @@
  * Follow up: What if the values are not distinct?
  */
 
+const magicIndex = () => {};
+
 //Test Cases
