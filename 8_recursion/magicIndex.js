@@ -61,3 +61,9 @@ console.log(result, 'should be', 4);
 a = [1, 2, 3];        // no magic indeces
 result = findMagicIndex(a);
 console.log(result, 'should be', null);
+
+// Not distinct
+a = [1, 1, 1, 1, 2];
+a = [-3, -2, 1, 2, 3, 5, 5];
+
+
