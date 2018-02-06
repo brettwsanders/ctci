@@ -23,15 +23,15 @@
     font-family: sans-serif;
 }
 
-.red {
+.on.red {
     background-color: red;
 }
 
-.yellow {
+.on.yellow {
     background-color: yellow;
 }
 
-.green {
+.on.green {
     background-color: green;
 }
 
