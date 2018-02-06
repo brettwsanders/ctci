@@ -1,4 +1,44 @@
-div {
-    border: 1px solid black;
+.fixture {
+    display: inline-block;
+    position: absolute;
+    border: 3px solid black;
+    left: 50%;
+    top: 50%;
+    padding: 10px;
+    transform: translate(-50%, -50%);
+}
+
+.fixture > .light {
+    position: relative;
+    border: 3px solid black;
+    height: 100px;
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+.fixture > .button {
+    position: relative;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.red {
     background-color: red;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.green {
+    background-color: green;
+}
+
+.dark-grey {
+    background-color: #555555;
+}
+
+.grey {
+    background-color: #777;
 }
