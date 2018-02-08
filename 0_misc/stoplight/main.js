@@ -1,4 +1,4 @@
-const changeLight = e => {
+const changeLight = () => {
     // select all lights
     const lights = document.getElementsByClassName("light");
     let prevOn;
