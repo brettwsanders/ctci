@@ -11,8 +11,6 @@
  */
 
 const moveDisks = (start, mid, end) => {
-    // add check to ensure all towers are sorted appropriately (validate input)
-
     // base case
     if (start.length == 0 && mid.length === 0) return end; // completed!
 
