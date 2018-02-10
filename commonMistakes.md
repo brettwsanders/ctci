@@ -6,3 +6,5 @@
 
 - When using a getter, calling it like a function
     example: node.left() instead of node.left
+
+- Using const instead of let
