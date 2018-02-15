@@ -8,3 +8,8 @@
     example: node.left() instead of node.left
 
 - Using const instead of let
+
+
+
+UI
+- better understanding of JS DOM selectors
