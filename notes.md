@@ -9,7 +9,7 @@
 
 - Using const instead of let
 - When dividing always think about problems diving by 0
-- Common edge cases: zeros, array length too short, 
+- Common edge cases: zeros, array length too short, negative numbers
 
 UI
 - better understanding of JS DOM selectors
@@ -28,3 +28,5 @@ Approach:
 - use good variable names, and constants
 
 
+Patterns:
+- start with a brute force solution, look for repeat work in that solution, and modify it to only do that work once.
