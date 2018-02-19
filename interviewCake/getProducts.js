@@ -34,27 +34,20 @@
 
 //input = [1, 7, 3, 4];
 const getProductsOfAllIntsExceptAtIndex = ints => {
-    const productsOfIntsBeforeIndex = []; // [1, 1, 7, 21]
-    const productsOfIntsAfterIndex = [];  // [84, 12, 4, 1]
-    const products = [];
+    const products = []; // [1, 1, 7, 21]
 
-    let productsSoFarForward = 1;
-    let productsSoFarBackward = 1;
+    let productSoFar = 1;
     for (let i = 0; i < ints.length; i++) {
-        const intForward = ints[i];
-        productsOfIntsBeforeIndex.push(productsSoFarForward);
-        productsSoFarForward = productsSoFarForward * intForward;
-
-        const intBackward = ints[ints.length - 1 - i];
-        productsOfIntsAfterIndex.unshift(productsSoFarBackward);
-        productsSoFarBackward = productsSoFarBackward * intBackward;
+        products.push(productSoFar);
+        productSoFar = productSoFar * ints[i];
     }
 
-    for (let i = 0; i < ints.length; i++) {
-        const product = productsOfIntsBeforeIndex[i] * productsOfIntsAfterIndex[i];
-        products.push(product);
+    productSoFar = 1;
+    for (let i = ints.length - 1; i >= 0; i--) {
+        products[i] = products[i] * productSoFar;
+        productSoFar = productSoFar * ints[i];
     }
-        
+
     return products;
 };
 
