@@ -19,18 +19,47 @@
 //}
 // time complexity: o(n^2)
 
-const getProductsOfAllIntsExceptAtIndex = ints => {
-    // get product of all ints
-    const product = ints.reduce((acc, int) => {
-        return acc * int;
-    }, 1);
-    // map though ints and return product diveded by int
-    return ints.map(int => {
-        return product / int;
-    });
-}
+// const getProductsOfAllIntsExceptAtIndex = ints => {
+//     // get product of all ints
+//     const product = ints.reduce((acc, int) => {
+//         return acc * int;
+//     }, 1);
+//     // map though ints and return product diveded by int
+//     return ints.map(int => {
+//         return product / int;
+//     });
+// }
 // time complexity: O(n)
 // space complexity: O(1)
+
+//input = [1, 7, 3, 4];
+const getProductsOfAllIntsExceptAtIndex = ints => {
+    const productsOfIntsBeforeIndex = []; // [1, 1, 7, 21]
+    const productsOfIntsAfterIndex = [];  // [84, 12, 4, 1]
+    const products = [];
+
+    let productsSoFarForward = 1;
+    let productsSoFarBackward = 1;
+    for (let i = 0; i < ints.length; i++) {
+        const intForward = ints[i];
+        productsOfIntsBeforeIndex.push(productsSoFarForward);
+        productsSoFarForward = productsSoFarForward * intForward;
+
+        const intBackward = ints[ints.length - 1 - i];
+        productsOfIntsAfterIndex.unshift(productsSoFarBackward);
+        productsSoFarBackward = productsSoFarBackward * intBackward;
+    }
+
+    for (let i = 0; i < ints.length; i++) {
+        const product = productsOfIntsBeforeIndex[i] * productsOfIntsAfterIndex[i];
+        products.push(product);
+    }
+        
+    return products;
+};
+
+//time complexity: O(n)
+//space complexity: O(1)
 
 // test cases
 let input;
