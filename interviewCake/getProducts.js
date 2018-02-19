@@ -6,17 +6,31 @@
 // constraints: 
 // edge cases:
 
+//const getProductsOfAllIntsExceptAtIndex = ints => {
+//    return ints.map((int, index) => {
+//        return ints.reduce((product, innerInt, innerIndex) => {
+//            if (index !== innerIndex) {
+//                return product * innerInt;
+//            } else {
+//                return product;
+//            }
+//        }, 1);
+//    });
+//}
+// time complexity: o(n^2)
+
 const getProductsOfAllIntsExceptAtIndex = ints => {
-    return ints.map((int, index) => {
-        return ints.reduce((product, innerInt, innerIndex) => {
-            if (index !== innerIndex) {
-                return product * innerInt;
-            } else {
-                return product;
-            }
-        }, 1);
+    // get product of all ints
+    const product = ints.reduce((acc, int) => {
+        return acc * int;
+    }, 1);
+    // map though ints and return product diveded by int
+    return ints.map(int => {
+        return product / int;
     });
 }
+// time complexity: O(n)
+// space complexity: O(1)
 
 // test cases
 let input;
