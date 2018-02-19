@@ -8,6 +8,8 @@
     example: node.left() instead of node.left
 
 - Using const instead of let
+- When dividing always think about problems diving by 0
+- Common edge cases: zeros, array length too short, 
 
 UI
 - better understanding of JS DOM selectors

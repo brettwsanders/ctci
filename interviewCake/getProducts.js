@@ -34,6 +34,7 @@
 
 //input = [1, 7, 3, 4];
 const getProductsOfAllIntsExceptAtIndex = ints => {
+    if (ints.length === 1) return [null];
     const products = []; // [1, 1, 7, 21]
 
     let productSoFar = 1;
@@ -63,5 +64,19 @@ let expected;
 input = [1, 7, 3, 4];
 output = getProductsOfAllIntsExceptAtIndex(input);
 expected = [84, 12, 28, 21];
+
+console.log(output, 'should be', expected);
+
+// tc2
+input = [0, 7, 3, 4];
+output = getProductsOfAllIntsExceptAtIndex(input);
+expected = [84, 0, 0, 0];
+
+console.log(output, 'should be', expected);
+
+// tc3
+input = [1];
+output = getProductsOfAllIntsExceptAtIndex(input);
+expected = [null];
 
 console.log(output, 'should be', expected);
