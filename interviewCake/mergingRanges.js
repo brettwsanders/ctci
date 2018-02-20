@@ -1,6 +1,5 @@
 /*
- * input: array of multiple meeting time ranges
- * output: array of condensed ranges
+ * input: array of multiple meeting time ranges * output: array of condensed ranges
  * constraints: efficient even when can't put upper bound on nums
  * edge:
  *
@@ -67,3 +66,52 @@ expected = [
 output = mergeRanges(input);
 
 console.log(output, 'should be', expected);
+console.log('*******');
+
+// tc2
+input = [
+    {startTime: 1,  endTime: 3},
+    {startTime: 2,  endTime: 4},
+];
+
+expected = [
+    {startTime: 1, endTime: 4}
+];
+
+output = mergeRanges(input);
+
+console.log(output, 'should be', expected);
+console.log('*******');
+
+// tc3
+input = [
+    {startTime: 1,  endTime: 2},
+    {startTime: 2,  endTime: 3},
+];
+
+expected = [
+    {startTime: 1, endTime: 3}
+];
+
+output = mergeRanges(input);
+
+console.log(output, 'should be', expected);
+console.log('*******');
+
+// tc4
+input = [
+    {startTime: 1,  endTime: 5},
+    {startTime: 2,  endTime: 3},
+];
+
+expected = [
+    {startTime: 1, endTime: 5}
+];
+
+output = mergeRanges(input);
+
+console.log(output, 'should be', expected);
+console.log('*******');
+
+
+
