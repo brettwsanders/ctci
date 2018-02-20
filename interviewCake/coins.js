@@ -47,3 +47,17 @@ denoms = [1, 2, 3];
 output = getCoinCombos(amount, denoms);
 expected = 4;
 console.log(output, 'should be', expected);
+
+// tc2
+amount = 13; denoms = [1, 5, 10, 25];
+output = getCoinCombos(amount, denoms);
+expected = 4;
+console.log(output, 'should be', expected);
+
+// tc3
+amount = 7;
+denoms = [1, 5, 10, 25];
+output = getCoinCombos(amount, denoms);
+expected = 2;
+console.log(output, 'should be', expected);
+
