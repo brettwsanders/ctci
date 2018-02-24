@@ -10,6 +10,7 @@
 - Using const instead of let
 - When dividing always think about problems diving by 0
 - Common edge cases: zeros, array length too short, negative numbers
+- Setting display: absolute, instead of position: absolute
 
 UI
 - better understanding of JS DOM selectors
