@@ -12,10 +12,14 @@
 - Common edge cases: zeros, array length too short, negative numbers
 - Setting display: absolute, instead of position: absolute
 
+
 UI
 - better understanding of JS DOM selectors
 - CSS animations
 - forms
+
+JS
+- Promise class
 
 Approach:
 - define the problem
